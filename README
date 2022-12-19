@@ -1,0 +1,185 @@
+------------------------------------>TEMA 2 PCLP<------------------------------
+
+TASK 1:
+
+	Functia SolveTask1 primeste ca parametru vectorul infode tip void in care
+se tine informatia legata de un avion(coordonatele varfului avionului, directia
+in care acesta se indreapta, tipul avionului, cod-ul aeroportului format din
+3 litere de tipar si viteza acestuia), precum si numarul de avioane. Pentru
+fiecare avion, programul afiseaza toate informatiile acestuia utilizand pointeri
+si folosind o variabila numita aux initializata cu 0 care se modifica in functie
+de marimea tipurilor de date corespunzatoare (unsigned short, unsingned char sau
+unsigned int). Aceasta variabila aux ne ajuta pentru a parcurge vectorul info de
+tip void.
+
+
+TASK 2:
+	Functia SolveTask2 primeste ca parametru vectorul infode tip void in care
+se tine informatia legata de un avion(coordonatele varfului avionului, directia
+in care acesta se indreapta, tipul avionului, cod-ul aeroportului format din
+3 litere de tipar si viteza acestuia), numarul de avioane, un N care reprezinta
+dimensiunea matricii patratice si matricea noastra care trebuie completata cu 
+simbolul "*" in locul unde se afla un avion. Pentru fiecare avion, programul 
+citeste datele din avest vector info in niste variabile (poz_x, poz_y, directie
+tip_a) si in functie de tipul aeronavei(tip 1 sau 2) si de directia de mers
+a avionului, folosind mai multe if-uri, "desenam" avionul corespunzator tipului
+acestuia in matricea data (initializata cu ".") folosind simbolul "*".
+La final afisam matriea care reprezinta pozitia avionelor folosind un for in for!
+
+
+TASK 3:
+	Functia SolveTask2 primeste ca parametru vectorul infode tip void in care
+se tine informatia legata de un avion(coordonatele varfului avionului, directia
+in care acesta se indreapta, tipul avionului, cod-ul aeroportului format din
+3 litere de tipar si viteza acestuia) si numarul de avioane. La inceputul 
+programului ne creem o structura numita test care tine informatii legate de
+avion toate informatiile de avion. Apoi, creem un vector de tipul acestei
+structuri care tine toate informatiile despre avion. Pentru fiecare avion,
+introducem informatiile acestuia din vectorul void info, dat ca parametru
+in noul vector de tipul structurii pentru a pastra informatiile laolalta.
+	Apoi ne creem o functie numita compare types (care mai tarziu o sa 
+fie folosita pentru functia qsort) care ne sorteaza vectorul de avione in
+functie de cod-ul aeroportul, tipul avionului si a vitezei astfel:
+
+1.sortare crescator dupa tip
+    2.pentru tipuri egale, descrescator dupa Codul Aeroportului
+        3.pentru coduri egale, crescator dupa viteza
+La sfarsit, parcurgem vectorul de avioane deja sortat in urma qsort-ului si 
+afisam detaliile despre avion in ordine.
+
+
+TASK 4:
+	Functia SolveTask2 primeste ca parametru vectorul infode tip void in care
+se tine informatia legata de un avion(coordonatele varfului avionului, directia
+in care acesta se indreapta, tipul avionului, cod-ul aeroportului format din
+3 litere de tipar si viteza acestuia), numarul de avioane, numarul de obstacole,
+cei doi vectori care reprezinta coordonata X, respectiv coordonata Y a obstacolelor
+si dimensiunea matricei. Folosind structura explicata la task-ul anterior ne creem
+un vector de tipul structurii pe care il completam cu informatiile despre fiecare
+avion aflat in vectorul void primit ca parametru. Apoi in functie de tipul avionului
+si de directia in care aeronava se deplaseaza, folosind 4 if-uri programul face
+urmatorul lucru:
+	Programul pentru fiecare avion in functie de tipul acestuia si de directie
+calculeaza 2 puncte (numite margini) care reprezinta punctele in care avionul este
+cel mai lat. Exemplu: pentru avonul desenat mai jos cu directia de mers Nord 
+punctele margini sunt notate cu "@".
+		.........
+		.........
+		....*....
+		..@***@..
+		....*....
+		...***...
+		.........
+		.........
+		.........
+	Dupa ce am calculat punctele margini parcurgem matricea si verificam daca
+in zona reprezentata de directia de zbor a acestui avion se afla obstacole Exemplu:
+		...---...
+		...---...
+		...---...
+		..-----..
+		...-*-...
+		...***...
+		.........
+		.........
+		.........
+	Dupa cum puteti observa, programul cauta obstacole in zona marcata in matrice
+cu "-" si daca acesta nu gaseste obstacole in aceasta zona, considera ca avionul este
+in "siguranta" si face CONT_AVIOANE++, altfel daca in zona din exemplu este gasit CEL
+PUTIN un obstacol NU se face CONT_AVIOANE++.
+	La sfarsit programul afiseaza CONT_AVIOANE care reprezinta numarul de avioane
+care au "parasit spatiul aerian" indicat de matricea data fara a da peste obstacole!:)
+
+
+TASK 5:
+	Functia SolveTask2 primeste ca parametru vectorul infode tip void in care
+se tine informatia legata de un avion(coordonatele varfului avionului, directia
+in care acesta se indreapta, tipul avionului, cod-ul aeroportului format din
+3 litere de tipar si viteza acestuia), numarul de avioane, numarul de obstacole,
+cei doi vectori care reprezinta coordonata X, respectiv coordonata Y a obstacolelor
+, dimensiunea matricei si un timp notat cu T. Folosind structura explicata la task-ul
+anterior ne creem un vector de tipul structurii pe care il completam cu informatiile
+despre fiecare avion aflat in vectorul void primit ca parametru. Apoi intr-un for 
+cu numar de pasi egal cu variabila T primita ca parametru, parcurgem vectorul de 
+avioane si in functie de tipul avionului si de directia de mers completam in matrice
+cu "*" in locul unde se afla un avion, dar de aceasta data adunam o variabila numita 
+offset care pentru T = 0 este 0, iar apoi in functie de viteza fiecarui avion, aceasta
+variabila creste cu viteza respectiva a avionului. Exemplu:
+		.........                
+		.........
+		....*....
+		..*****..         Pentru acest avion cu viteza 2
+		....*....         in momentul T = 0
+		...***...
+		.........
+		.........
+		.........
+		
+		....*....
+		..*****..
+		....*....
+		...***...	  Acelasi avion, dar in momentul T = 1
+		.........
+		.........
+		.........
+		.........
+		.........
+
+	Dupa cum puteti observa, avionul de mai sus s-a deplasat in directia de
+mers Nord cu 2 unitati, astfel variabila offset in fiecare moment de timp creste
+cu 2.
+	Dupa ce avionul a fost desenat in momentul de timp T, se parcurg vectorii
+de obstacole si se verifica daca avionul se afla pe un obstacol, daca avionul se
+afla pe un obstacol atunci facem CONT++, iar apoi "refacem" matricea, punand 
+caracterul "." peste tot in matrice.
+	La sfarsit se afiseaza numarul de avioane care se afla pe obstacole intr-un
+punct din timp T. Exemplu:
+	0: 1    // In momentul de timp 0, se afla 1 avion pe obstacole
+	1: 2    // etc..
+	3: 0	// ..
+	4: 1	// ..
+	
+	Obs!!!
+Matricea data este "bordata" la inceput cu un rand/coloana pe fiecare parte!!!
+Exemplu:
+		.........
+		.........
+		....*....	// Pentru aceasta matrice
+		..*****..
+		....*....
+		...***...
+		.........
+		.........
+		.........
+		
+	       -----------		
+	       -.........-	// Am notat bordarea cu "-"
+	       -.........-
+	       -....*....-
+	       -..@***@..-
+	       -....*....-
+	       -...***...-
+	       -.........-
+	       -.........-
+	       -.........-
+	       -----------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
